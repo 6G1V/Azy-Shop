@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZY | SHOP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            position: relative;
+            overflow: auto;
+        }
+
+        hr {
+            border: 1px solid #ddd;
+            margin: 30px 0;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px; /* حجم الخط المصغر */
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        section {
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 10px;
+            transition: transform 0.3s, filter 0.3s;
+            cursor: pointer;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
+
+        img.yellow-border {
+            border: 2px solid #fdd835;
+            pointer-events: auto;
+        }
+
+        .shop-name {
+            color: #757575;
+            font-size: 14px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .categories {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .overlay h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>مرحبًا في موقع البيع</h1>
+    <p>تعريف المتجر هنا...</p>
+    <hr>
+
+    <h2><a href="javascript:void(0);" onclick="showOverlay('Blox Fruit')">قسم Blox Fruit</a></h2>
+    <img class="yellow-border" src="https://cdn.discordapp.com/attachments/1139991182768885760/1216092033119158353/PicsArt_03-09-09.35.27.png?ex=65ff20f6&is=65ecabf6&hm=8d2cba09306cab296db6795c47b8b3e92edc5bebfa41888df0924e7a3cabdbf0" alt="Blox Fruit">
+
+    <h2><a href="javascript:void(0);" onclick="showOverlay('TikTok')">قسم TikTok</a></h2>
+    <img class="yellow-border" src="https://cdn.discordapp.com/attachments/1139991182768885760/1216091729162276956/PicsArt_03-09-09.33.29.png?ex=65ff20ae&is=65ecabae&hm=733e7ffb5d3353b71647b5acc91efccb32edfdc7b7f1f6442b7ce356a275db48" alt="TikTok">
+
+    <h2><a href="javascript:void(0);" onclick="showOverlay('Discord')">قسم Discord</a></h2>
+    <img class="yellow-border" src="https://cdn.discordapp.com/attachments/1139991182768885760/1216091713333104800/PicsArt_03-09-09.31.31.png?ex=65ff20aa&is=65ecabaa&hm=a3e397a3f75a8ddedcfd0287284e76e928541513056a66b18a88aa865ab76584" alt="Discord">
+
+    <div class="categories" onclick="showCategories()">...</div>
+    <p class="shop-name">AZY | SHOP</p>
+
+    <div class="overlay" id="overlay">
+        <h2 id="overlayText"></h2>
+    </div>
+
+    <script>
+        function showOverlay(category) {
+            document.getElementById('overlay').style.display = 'flex';
+            document.getElementById('overlayText').innerText = 'قسم ' + category;
+            setTimeout(function() {
+                document.getElementById('overlay').style.display = 'none';
+            }, 3000);
+        }
+
+        function showCategories() {
+            var categoriesText = 'TikTok\nDiscord\nBlox Fruit';
+            var selectedCategory = prompt(categoriesText, ''); // يظهر نص يحتوي على الأقسام ويتيح للمستخدم اختيار واحدة
+            if (selectedCategory) {
+                switch (selectedCategory.toLowerCase()) {
+                    case 'tiktok':
+                        window.location.href = '#tiktok-section';
+                        break;
+                    case 'discord':
+                        window.location.href = '#discord-section';
+                        break;
+                    case 'blox fruit':
+                        window.location.href = '#blox-fruit-section';
+                        break;
+                    default:
+                        alert('الرجاء اختيار قسم صحيح.');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
